@@ -84,7 +84,7 @@ Note: You are not expected to create any complicated circuit for this part. The 
 
 Although, you are welcome to think big. The reason to think big is that you may choose to implement and expand on a similar use case for the final course project. There will be multiple tracks for the final course project. A good course project in the hardware track is to implement a game such as Rock Paper Scissor. Maybe you can think about something smaller for this task that may lead you to implement a game such as RPS for your final course project?
 
-## Lab Submission:
+## Lab Submission Checklist:
 1) Honor code file
 2) Reflection file
 3) P1/full-match.circ and P1/partial-match.circ
