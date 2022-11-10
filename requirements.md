@@ -1,92 +1,131 @@
 ## Requirements
-Total Points 50. Due date 11/10/2022 8:00 am. 
+Total Points 50. Due date 11/17/2022 8:00 am. 
 Individual assignment. 
 
 ## Lab overview:
-The goal of this lab is to practice logical circuit development using Logisim. Additionally, this lab will also challenge you to use truth tables to validate the correctness of the circuit design.  
+The goal of this lab is to practice assembly language development using Mars. Additionally, this lab will also challenge you to decode instructions from assembly language to binary.  
 
 ## Prereqs:
-Logisim: 
+Mars: 
 Prerequiste: Java (JDK) installation.
-Command to run logisim on your machine:
-java -jar logisim.app/Contents/Resources/Java/logisim.jar
+Command to run mars on your machine:
+java -jar mars.jar hello.asm
 
 
-## 1) Comparison circuit:
-This section is worth 10 points.
+## 1) Expression Builder in Assembly Language:
+This section is worth 20 points.
 
 (1.1) - 
-Draw two four-bit inputs I1 and I2. Using a splitter, split up the four bits to compare the entire match. The circuit used for full-match comparison was discussed in class. Refer to your class notes for the circuit design.
-Save the file with the name full-match.circ. The starter code is provided to you which is currently incomplete.  
+Implement an assembly language program to solve the following expression. Modify the starter code provided in p1/expr1.asm file to implement the logic to solve the expression and output the final value of F in the program. 
+
+F = (x+y) * (x-y)
+
+The starter code assume that the inputs X and Y are stored in t0 and t1 registers respectively. Final output F should be stored in the register t2. 
+
+Note: Assume X to be always greater than Y, and both X and Y to be a positive value. 
+
+The calculator example discussed in class will be very helpful to implement this requirement. mul is the command for multiply operations in Mars.
+
+Sample Output1:
+-------------------------
+Enter the value of X: 20
+Enter the value of Y: 10
+Final value of F is:  300
+
+Sample Output2:
+-------------------------
+Enter the value of X: 15
+Enter the value of Y: 10
+Final value of F is:  125
+
 Once tested, then push the code to the repo. 
-
-Test the circuit by using the following cases:
-(a)
-I1 = 1010
-I2 = 1010
-Out = 1
-
-(b)
-I1 = 1010
-I2 = 0101
-Out = 0
-
-(c)
-I1 = 1010
-I2 = 1001
-Out = 0
 
 (1.2) - 
-Draw two four-bit inputs I1 and I2. Using a splitter, split up the four bits to compare the partial match. The circuit used for partial match comparison was discussed in class. Refer to your class notes for the circuit design.
-Save the file with the name partial-match.circ. The starter code is provided to you which is currently incomplete.  
-Once tested, then push the code to the repo. 
+Implement an assembly language program to solve the following expression. Modify the starter code provided in p1/expr2.asm file to implement the logic to solve the expression and output the final value of F in the program. 
 
-Test the circuit by using the following cases:
-(a)
-I1 = 1010
-I2 = 1010
-Out = 1
+F = (x+y) / (x-y)
 
-(b)
-I1 = 1010
-I2 = 0101
-Out = 0
+The starter code assume that the inputs X and Y are stored in t0 and t1 registers respectively. Final output F should be stored in the register t2. 
 
-(c)
-I1 = 1010
-I2 = 1001
-Out = 1
+Assumptions: Assume X to be always greater than Y, and both X and Y to be a positive value. 
 
-## 2) Expression Builder:
-This section is worth 20 points.
+The calculator example discussed in class will be very helpful to implement this requirement. div is the command for divide operations in Mars.
 
-Draw the logical circuit for the following expressions:
-1) z1 = (¬a ∨ b) ∧ (¬p ∨ q)
-2) z2 = ¬(a ∧ b) ∨ ¬(¬p ∧ q)
+Sample Output1:
+-------------------------
+Enter the value of X: 20
+Enter the value of Y: 10
+Final value of F is:  3
 
-The logical circuit should include both expressions in one file named expressions.circ. The starter code is provided to you which is currently incomplete.  
-Complete the truth table in the file named expressions.md file. This file should be completed and used for testing the correctness of the circuit. 
+Sample Output2:
+-------------------------
+Enter the value of X: 15
+Enter the value of Y: 10
+Final value of F is:   5
 
 Once tested, then push the code to the repo. 
 
-## 3) Do your own circuit:
+## 2) Decoding Assembly Language Code To Binary:
+This section is worth 10 points.
+
+(2.1) - 
+Decode the instruction add $t0, $t1, $t2 using the steps discussed in class. The final output should be an 8 digit Hex number. Solve this without using the Mars tool to make sure you practice decoding procedure before the Quiz and the Finals. 
+
+(2.2) - 
+Decode the instruction sub $t0, $t1, $t2 using the steps discussed in class. The final output should be an 8 digit Hex number. Solve this without using the Mars tool to make sure you practice decoding procedure before the Quiz and the Finals. 
+
+Write down your two outputs in the file named p2/decode.md file. 
+
+## 3) Implement Bank Transaction Report:
 This section is worth 20 points.
 
-This is an open-ended question. Think of a circuit similar to the requirements listed in implementing the Rainfall use case. The source code in gates.c and rainfall-1 and rainfall-2 circuits completed in class will be very useful to complete this part. 
+In this section, we will implement a bank transaction report for a period of 5 days. We assume an initial balance of $500 given to the program. 
 
-First, write down your idea of "what the circuit does?" in the file named overview.md file. This summary should indicate what are the inputs, what are the rules in the application, what are the expected output, and what is the overall goal of the application.
+Take a look at the C Program in transaction.c provided in the p3 folder so as to understand the logic involved in solving this problem. Execute the program a few times to understand the code. After looking at the C program, you are required to translate the logic to Assembly language using the add and sub operations in the p3/transaction.asm file. You are welcome to use any number of registers from t0 to t7 to complete this requirement. However, a good implementation should always use minimum number of registers. 
 
-Second, implement your idea in a C program. Save this file using the name usecase.c file. The starter code is provided for your reference but is incomplete and needs to be completed. 
+The program should prompt the user for the transactions completed from Day 1 to Day 5 for a period of 5 days. The prompts should be similar to the ones below:
 
-Third, implement your idea in Logisim. Save this file using the name usecase.circ file. The starter code is provided for your reference but is incomplete and needs to be completed.
+Enter the transaction amount for Day1: 
+Enter the transaction amount for Day2: 
+Enter the transaction amount for Day3: 
+Enter the transaction amount for Day4: 
+Enter the transaction amount for Day5: 
 
-Note: You are not expected to create any complicated circuit for this part. The easier thing to do would be to come up with a use case that is just a variation of the Rainfall example. The secret of success here is to devise the core idea based on conditional logic using the fundamental gates/operators in [and, or, not, and, nor, and xor]. 
+The program should them find the total transaction amount and the Remaining Balance. The calculator example discussed in class will be very helpful to implement this requirement.  
 
-Although, you are welcome to think big. The reason to think big is that you may choose to implement and expand on a similar use case for the final course project. There will be multiple tracks for the final course project. A good course project in the hardware track is to implement a game such as Rock Paper Scissor. Maybe you can think about something smaller for this task that may lead you to implement a game such as RPS for your final course project?
+Assumptions: The user input for the transaction amount is always a positive number greater than 0. We also assume that the total transaction amount given to the program is always less than 500. This way the remaining balance is never negative or less than 0. 
+
+Now start thinking about what can you do with Mars and Assembly language programming for your final project. 
+The general rule of thumb is whatever we implement in C can also be implemented in Mars. But for the final project in this track you will implement a realistic and simplistic idea that can be implemented in both C and translated to Mars. A good course project in the MIPS track is to implement a game such as Rock Paper Scissor. Maybe you can think about something similar for your final course project?
+
+Sample Output1:
+-------------------------
+Enter the transaction amount for Day1: 50
+Enter the transaction amount for Day2: 60
+Enter the transaction amount for Day3: 70
+Enter the transaction amount for Day4: 80
+Enter the transaction amount for Day5: 90
+Total transaction amount is: 350
+Remaining balance is: 150
+
+
+Sample Output2:
+-------------------------
+Enter the transaction amount for Day1: 60
+Enter the transaction amount for Day2: 70
+Enter the transaction amount for Day3: 80
+Enter the transaction amount for Day4: 90
+Enter the transaction amount for Day5: 100
+Total transaction amount is: 400
+Remaining balance is: 100
+
+
+Once tested, then push the code to the repo. 
+
 
 ## Lab Submission Checklist:
 1) Honor code file
 2) Reflection file
-3) P1/full-match.circ and P1/partial-match.circ
-4) P2/expressions.circ and P2/expressions.md
-5) P3/overview.md, P3/usecase.c and P3/usecase.md
+3) P1/expr1.asm and P1/expr2.asm
+4) P2/decode.md
+5) P3/transaction.asm file
