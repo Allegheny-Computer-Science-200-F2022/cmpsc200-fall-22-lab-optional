@@ -1,10 +1,10 @@
 ## Requirements
-Total Points 50. Due date 11/17/2022 8:00 am. 
+Total Points 50. Due date 12/2/2022 8:00 am. 
 Individual assignment. 
 
 ## Lab overview:
-The goal of this lab is to practice assembly language development using Mars. Additionally, this lab will also challenge you to decode instructions from assembly language to binary.  
-
+The goal of this lab is to practice assembly language development using Mars one additional time. This optional lab is also intended to help boost your grade. The lab score for this optional lab will be used to swap with any of your lowest lab scores this semester. Please note: Labs 7 and 8 are currently in the grading process. Expect to receive these two lab grades by Tuesday, Nov 22'nd. I suggest deciding to start working on this optional lab based on the lab grades that you had so far, that is Lab-1 to Lab-6. You may also decide to work on the lab based on your self-assessment of how well you completed Lab-7 and Lab-8. Finally, it is recommended that everyone do this optional lab as this will allow more practice with Mars and Assembly Language and challenge you to translate C programs to Programs in the MIPS style.
+  
 ## Prereqs:
 Mars: 
 Prerequiste: Java (JDK) installation.
@@ -12,120 +12,31 @@ Command to run mars on your machine:
 java -jar mars.jar hello.asm
 
 
-## 1) Expression Builder in Assembly Language:
-This section is worth 20 points.
+## Rainfall usecase
+This section is worth 50 points.
 
-(1.1) - 
-Implement an assembly language program to solve the following expression. Modify the starter code provided in p1/expr1.asm file to implement the logic to solve the expression and output the final value of F in the program. 
+Implement an assembly language program to translate the Rainfall usecase implemented in C. The starter code in the P1 folder includes the Rainfall program implemented in C. 
 
-F = (x+y) * (x-y)
+You are required to translate this program into Assembly Language using Mars. The incomplete code is provided in the P1/rainfall.asm file. Complete this code by adding the appropriate logic using the registers of your choice and conditional instructions such as [beq, bgt, blt, bge, ble, bne].
 
-The starter code assume that the inputs X and Y are stored in t0 and t1 registers respectively. Final output F should be stored in the register t2. 
+The Weather/temperature example discussed in class this week will be very useful to implement the Rainfall usecase in Mars. Take a look at the Week11 class materials for getting the right resources to complete this implementation.  
 
-Note: Assume X to be always greater than Y, and both X and Y to be a positive value. 
+The rules of the Rainfall usecase are provided below:
 
-The calculator example discussed in class will be very helpful to implement this requirement. mul is the command for multiply operations in Mars.
+1) If it is raining and (assuming you have both an umbrella and a raincoat) then "get ready to leave"
 
-Sample Output1:
--------------------------
-Enter the value of X: 20
-Enter the value of Y: 10
-Final value of F is:  300
+2) If it is raining and (assuming you have either an umbrella or a raincoat but not both) then "avoid getting wet"
 
-Sample Output2:
--------------------------
-Enter the value of X: 15
-Enter the value of Y: 10
-Final value of F is:  125
+3) If it is raining and (assuming you don't have either an umbrella or a raincoat) then "stay home"
+
+4) If it is not raining then "go out and have fun"
+
+Sample Output:
+Execute the rainfall.c program to view the sample expected output. Your output in the asm code should match the output and the logic used in the C program. 
 
 Once tested, then push the code to the repo. 
-
-(1.2) - 
-Implement an assembly language program to solve the following expression. Modify the starter code provided in p1/expr2.asm file to implement the logic to solve the expression and output the final value of F in the program. 
-
-F = (x+y) / (x-y)
-
-The starter code assume that the inputs X and Y are stored in t0 and t1 registers respectively. Final output F should be stored in the register t2. 
-
-Assumptions: Assume X to be always greater than Y, and both X and Y to be a positive value. 
-
-The calculator example discussed in class will be very helpful to implement this requirement. div is the command for divide operations in Mars.
-
-Sample Output1:
--------------------------
-Enter the value of X: 20
-Enter the value of Y: 10
-Final value of F is:  3
-
-Sample Output2:
--------------------------
-Enter the value of X: 15
-Enter the value of Y: 10
-Final value of F is:   5
-
-Once tested, then push the code to the repo. 
-
-## 2) Decoding Assembly Language Code To Binary:
-This section is worth 10 points.
-
-(2.1) - 
-Decode the instruction add $t0, $t1, $t2 using the steps discussed in class. The final output should be an 8 digit Hex number. Solve this without using the Mars tool to make sure you practice decoding procedure before the Quiz and the Finals. 
-
-(2.2) - 
-Decode the instruction sub $t0, $t1, $t2 using the steps discussed in class. The final output should be an 8 digit Hex number. Solve this without using the Mars tool to make sure you practice decoding procedure before the Quiz and the Finals. 
-
-Write down your two outputs in the file named p2/decode.md file. 
-
-## 3) Implement Bank Transaction Report:
-This section is worth 20 points.
-
-In this section, we will implement a bank transaction report for a period of 5 days. We assume an initial balance of $500 given to the program. 
-
-Take a look at the C Program in transaction.c provided in the p3 folder so as to understand the logic involved in solving this problem. Execute the program a few times to understand the code. After looking at the C program, you are required to translate the logic to Assembly language using the add and sub operations in the p3/transaction.asm file. You are welcome to use any number of registers from t0 to t7 to complete this requirement. However, a good implementation should always use minimum number of registers. 
-
-The program should prompt the user for the transactions completed from Day 1 to Day 5 for a period of 5 days. The prompts should be similar to the ones below:
-
-Enter the transaction amount for Day1: 
-Enter the transaction amount for Day2: 
-Enter the transaction amount for Day3: 
-Enter the transaction amount for Day4: 
-Enter the transaction amount for Day5: 
-
-The program should them find the total transaction amount and the Remaining Balance. The calculator example discussed in class will be very helpful to implement this requirement.  
-
-Assumptions: The user input for the transaction amount is always a positive number greater than 0. We also assume that the total transaction amount given to the program is always less than 500. This way the remaining balance is never negative or less than 0. 
-
-Now start thinking about what can you do with Mars and Assembly language programming for your final project. 
-The general rule of thumb is whatever we implement in C can also be implemented in Mars. But for the final project in this track you will implement a realistic and simplistic idea that can be implemented in both C and translated to Mars. A good course project in the MIPS track is to implement a game such as Rock Paper Scissor. Maybe you can think about something similar for your final course project?
-
-Sample Output1:
--------------------------
-Enter the transaction amount for Day1: 50
-Enter the transaction amount for Day2: 60
-Enter the transaction amount for Day3: 70
-Enter the transaction amount for Day4: 80
-Enter the transaction amount for Day5: 90
-Total transaction amount is: 350
-Remaining balance is: 150
-
-
-Sample Output2:
--------------------------
-Enter the transaction amount for Day1: 60
-Enter the transaction amount for Day2: 70
-Enter the transaction amount for Day3: 80
-Enter the transaction amount for Day4: 90
-Enter the transaction amount for Day5: 100
-Total transaction amount is: 400
-Remaining balance is: 100
-
-
-Once tested, then push the code to the repo. 
-
 
 ## Lab Submission Checklist:
 1) Honor code file
 2) Reflection file
-3) P1/expr1.asm and P1/expr2.asm
-4) P2/decode.md
-5) P3/transaction.asm file
+3) P1/rainfall.asm 
